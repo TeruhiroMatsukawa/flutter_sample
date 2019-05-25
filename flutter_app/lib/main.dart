@@ -1,70 +1,62 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(SampleApp());
-
-const String _title = 'You have pushed the button this many times:';
-
-class SampleApp extends StatelessWidget {
-
-  static String title = 'Flutterサンプルアプリ';
+void main() {
+  runApp(new MyApp());
+}
+class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Dmemo',
-      theme: ThemeData(
+    return new MaterialApp(
+      title: 'Generated App',
+      theme: new ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: const Color(0xFF2196f3),
+        accentColor: const Color(0xFF2196f3),
+        canvasColor: const Color(0xFFfafafa),
       ),
-      home: MyHomePage(
-        title: title,
-      ),
+      home: new MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  final String title;
-
-  MyHomePage({this.title}): super();
-
+  MyHomePage({Key key}) : super(key: key);
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('App Name'),
       ),
-      body: Center(
+      body:
+      Card(
+        margin: EdgeInsets.all(50.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+
           children: <Widget>[
             Text(
-              _title,
+              'Hello!',
+              style: TextStyle(fontSize: 32.0),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            )
+              'This is Card LAyout.' * 5,
+              style: TextStyle(fontSize: 18.0),
+            ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      )
+
     );
   }
 }
